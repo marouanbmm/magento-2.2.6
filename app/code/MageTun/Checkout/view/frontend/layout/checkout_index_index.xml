@@ -8,7 +8,7 @@
                             <item name="children" xsi:type="array">
                                 <item name="steps" xsi:type="array">
                                     <item name="children" xsi:type="array">
-                                        <!-- The new step you add -->
+                                        <!-- The new step before shipping adress -->
                                         <item name="my-new-steps" xsi:type="array">
                                             <item name="component" xsi:type="string">MageTun_Checkout/js/view/my-steps-view</item>
                                             <!--To display step content before shipping step "sortOrder" value should be < 1-->
@@ -19,7 +19,7 @@
                                                 <!--add here child component declaration for your step-->
                                             </item>
                                         </item>
-                                        <!-- Shepping steps -->
+                                        <!-- add content before Shepping methode-->
                                         <item name="shipping-step" xsi:type="array">
                                             <item name="children" xsi:type="array">
                                                 <item name="shippingAddress" xsi:type="array">
@@ -28,6 +28,27 @@
                                                             <item name="children" xsi:type="array">
                                                                 <item name="exter_shipping_policy" xsi:type="array">
                                                                     <item name="component" xsi:type="string">MageTun_Checkout/js/view/checkout/shipping/extrat-component</item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                        <!-- add payment methode -->
+                                        <item name="billing-step" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="payment" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="renders" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="magetun" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">MageTun_Checkout/js/view/payment/magetun</item>
+                                                                    <item name="methods" xsi:type="array">
+                                                                        <item name="magetun" xsi:type="array">
+                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                    </item>
                                                                 </item>
                                                             </item>
                                                         </item>
