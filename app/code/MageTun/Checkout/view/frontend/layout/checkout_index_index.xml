@@ -56,7 +56,7 @@
                                                         <item name="additional-payment-validators" xsi:type="array">
                                                             <item name="children" xsi:type="array">
                                                                 <!-- Declare your validation. START -->
-                                                                <item name="your-validator" xsi:type="array">
+                                                                <item name="magetun-validator" xsi:type="array">
                                                                       <item name="component" xsi:type="string">MageTun_Checkout/js/view/payment/additionnal-information/magetun-validator</item>
                                                                 </item>
                                                                 <!-- Declare your validation. END -->
