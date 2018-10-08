@@ -11,5 +11,16 @@
                 <group>offline</group>
             </magetun>
         </payment>
+        <carriers>
+            <magetun>
+                <model>MageTun\Checkout\Model\Carrier\MageTun</model>
+                <active>1</active>
+                <title>MageTun</title>
+                <name>MageTun</name>
+                <price>0.00</price>
+                <specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+                <sallowspecific>0</sallowspecific>
+            </magetun>
+        </carriers>
     </default>
 </config>
