@@ -1,0 +1,7 @@
+<integrations>
+    <integration name="testIntegration">
+        <resources>
+            <resource name="MageTun_Services::mageTunServicesTechnifibreManagementV1" />
+        </resources>
+    </integration>
+</integrations>

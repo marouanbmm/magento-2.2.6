@@ -1,0 +1,28 @@
+{
+  "name": "magetun/services",
+  "description": "web services api",
+  "require": {
+    "php": "~5.6.0|7.0.2|~7.0.6",
+    "magento/framework": "0.74.0-beta4",
+    "magento/module-integration": "2.2.1"
+  },
+  "type": "magento2-module",
+  "version": "0.74.0-beta4",
+  "autoload": {
+    "files": [ "registration.php" ],
+    "psr-4": {
+      "MageTun/Services": ""
+    }
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "extra": {
+    "map": [
+      [
+        "*",
+        "MageTun/Services"
+      ]
+    ]
+  }
+}

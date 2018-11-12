@@ -1,0 +1,7 @@
+<integrations>
+    <integration name="TestIntegration">
+        <email>marouan.benmansour@symdrik.com</email>
+        <endpoint_url>http://magento226.prep/me_services/callback/response</endpoint_url>
+        <identity_link_url>http://magento226.prep/me_services/callback/request</identity_link_url>
+    </integration>
+</integrations>
