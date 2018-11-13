@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="./Les points de vente Chaumet près de vous _ Joaillerie et montres de luxe_files/nr-1099.min.js"></script>
+<script async="" src="./luxe_files/gtm.js"></script>
+<script type="text/javascript" async="" src="./luxe_files/ga.js"></script>
+ <!-- Google API -->
+<script type="text/javascript" src="./luxe_files/js" id="lf_mapping_api"></script>
+    <!-- /Google API -->
+    <!-- Vendors -->
+    <script src="./luxe_files/jquery-1.11.2.min.js"></script>
+    <!-- /Vendors -->
+</head>
+<body data-spy="scroll" data-target="#pos-tabs" data-offset="203" class="">
+<div class="geolocalert alert alert-danger" role="alert" data-lf-geolocalert="">
+    <div class="container">
+        <button type="button" class="close" aria-label="Close" data-lf-geolocalert-close=""><span aria-hidden="true">×</span></button>
+        <span data-lf-geolocalert-message=""></span>
+    </div>
+</div>
+<div class="home">
+    <div class="container">
+        <div class="home__illustration hidden-xs" data-src="https://d1nuj3f2uuhf3u.cloudfront.net/front_office/445/homepage_illustration/homepage_illustration.jpg?1452028610" data-display="background" style="background-image: url(&quot;https://d1nuj3f2uuhf3u.cloudfront.net/front_office/445/homepage_illustration/homepage_illustration.jpg?1452028610&quot;);"></div>
+        <div class="home__search hidden-print" data-lf-searchform="">
+            <div class="home__search__title">Trouver une boutique à proximité</div>
+            <button type="button" class="home__search__geoloc" data-lf-searchform-geoloc="" data-lf-tracking="{&quot;bind&quot;:&quot;click&quot;,&quot;category&quot;:&quot;geolocation&quot;}">
+        <span class="home__search__geoloc__label">
+            Me géolocaliser
+        </span>
+            </button>
+            <form action="https://boutiques.chaumet.com/search" method="GET" data-disable="false" data-lf-tracking="{&quot;bind&quot;:&quot;submit&quot;,&quot;category&quot;:&quot;searchform&quot;}">
+                <div class="row row-no-padding">
+                   <div class="col-sm-6 col-xs-12 home__search__paddingleft">
+                        <div class="form-group">
+                            <div class="typeahead-container">
+                        <span class="typeahead-query">
+                            <label for="query" class="sr-only">Recherche par mots-clés</label>
+                            <input type="text" id="query" name="query" class="form-control home__search__query" placeholder="Ville ou code postal" value="" autocomplete="off" data-placement="top" data-content="&lt;small&gt;Veuillez saisir des mots-clés dans le champ de recherche.&lt;/small&gt;" data-lf-searchform-query="">
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="checkbox home__search__filter" data-lf-homesearchform-filters="" style="display: none;">
+                    <input type="checkbox" id="show-store-geoloc" name="st_any[CATEGORIES][]" value="Boutiques">
+                    <label for="show-store-geoloc">
+                        La maison du convertible
+                    </label>
+                </div>
+                <div class="row row-no-padding">
+                    <div class="col-sm-6 col-xs-12">
+                        <button type="submit" class="home__search__submit btn-block" title="Lancer la recherche">
+                            Lancer la recherche
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+    </div>
+</div>
+
+<script>
+    // Add a script element as a child of the body
+    var eventPosId = '',
+        eventPage = 'index',
+        leadtime = '';
+    (function($){
+        $(document).ready(function() {
+            // Geolocation
+            function errorGeolocation(error) {
+                switch (error.code) {
+                    case error.TIMEOUT:
+                        $('[data-lf-geolocalert-message]').html("Temps de réponse pour la géolocalisation dépassée");
+                        $('[data-lf-geolocalert]').stop(true, true).fadeIn('fast').delay(3000).fadeOut('fast');
+                        break;
+                    case error.PERMISSION_DENIED:
+                        $('[data-lf-geolocalert-message]').html("La géolocalisation a été refusé par l'utilisateur");
+                        $('[data-lf-geolocalert]').stop(true, true).fadeIn('fast').delay(3000).fadeOut('fast');
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        $('[data-lf-geolocalert-message]').html("Géolocalisation impossible");
+                        $('[data-lf-geolocalert]').stop(true, true).fadeIn('fast').delay(3000).fadeOut('fast');
+                        break;
+                }
+            }
+            function successGeolocation(position) {
+                var url = 'https://boutiques.chaumet.com/geolocation' + '?lat=' + position.coords.latitude + '&lng=' + position.coords.longitude;
+                window.location.href = url;
+            }
+            function successItineraryGeolocation(position) {
+                $('[data-lf-pos-itinerary-start]').val(position.coords.latitude + ',' + position.coords.longitude);
+            }
+            $('[data-lf-searchform-geoloc]').click(function() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(successGeolocation, errorGeolocation, {
+                        maximumAge: 50000,
+                        timeout: 20000
+                    });
+                }
+            });
+            $('[data-lf-pos-itinerary-geolocation]').click(function(){
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(successItineraryGeolocation, errorGeolocation, {
+                        maximumAge: 50000,
+                        timeout: 20000
+                    });
+                }
+            });
+            $('[data-lf-result-locate]').click(function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                var markerId = $(this).data('marker-id');
+                app.mapMarkers.locateOnMap(markerId);
+
+                lf.app.listMap.markersByIndex[markerId].popup.setOptions({
+                    pixelOffset: new google.maps.Size(-1, -50)
+                });
+
+            });
+            $('[data-lf-result-map]').on('lf.mapReady', function() {
+                showPosInList = function(ev) {
+                    ev.data.popup.setOptions({
+                        pixelOffset: new google.maps.Size(-1, -50)
+                    });
+                };
+                for (var keyActive in lf.app.listMap.activeMarkers) {
+                    marker = lf.app.listMap.activeMarkers[keyActive];
+                    for(var i = 0; i < allPosMarker.length; i++) {
+                        if(allPosMarker[i].id === marker.pos_id) {
+                            lf.app.listMap.activeMarkers[keyActive].overlay.setStyle('number_' + allPosMarker[i].point_of_sale_type_name);
+                            break;
+                        }
+                    }
+                    if (typeof marker === 'object') {
+                        marker.bind('click', marker, showPosInList);
+                    }
+                }
+                for (var keyInactive in lf.app.listMap.inactiveMarkers) {
+                    marker = lf.app.listMap.inactiveMarkers[keyInactive];
+                    if (typeof marker === 'object') {
+                        marker.bind('click', marker, showPosInList);
+                    }
+                }
+            });
+            $('#contact_request_form_st_lead_type').addClass('form-control').attr('required', 'required').attr('data-width', '100%').attr('data-fv-notempty-message', 'Veuillez remplir ce champ').selectpicker();
+            $('[data-lf-contactform-message]').attr('rows', 7);
+            $('form[data-lf-pos-contactform]').formValidation({
+                framework: 'bootstrap',
+                excluded: ':disabled'
+            })
+                .on('success.form.fv', function() {
+                    return false;
+                })
+                .on('success.field.fv', function(e, data) {
+                    if (data.fv.getSubmitButton()) {
+                        data.fv.disableSubmitButtons(false);
+                    }
+                });
+
+           
+        }); 
+    })(jQuery);
+</script>
+<script type="text/javascript" id="">"undefined"===typeof window.config55&&google_tag_manager["GTM-MH5FM5"].macro(25)();google_tag_manager["GTM-MH5FM5"].macro(26)&&dataLayer.push({event:"trackEvent",eventCategory:"Store Locator",eventAction:google_tag_manager["GTM-MH5FM5"].macro(27),eventNonInteraction:!0});</script><script type="text/javascript" id="">(function(){window._uxa=window._uxa||[];try{if("undefined"!==typeof dataLayer)for(var a=0;a<dataLayer.length;a++)window._uxa.push(["setCustomVariable",1,"page",dataLayer[a].page,3]),window._uxa.push(["setCustomVariable",2,"visitLoginState",dataLayer[a].visitLoginState,3]),window._uxa.push(["setCustomVariable",3,"pageCategory",dataLayer[a].pageCategory,3]),window._uxa.push(["setCustomVariable",4,"productCategory",dataLayer[a].productCategory,3])}catch(b){}"undefined"===typeof CS_CONF?(window._uxa.push(["setPath",
+        window.location.pathname+window.location.hash.replace("#","?__")]),a=document.createElement("script"),a.type="text/javascript",a.async=!0,a.src="//t.contentsquare.net/uxa/f0b409beb8be0.js",document.getElementsByTagName("head")[0].appendChild(a)):window._uxa.push(["trackPageview",window.location.pathname+window.location.hash.replace("#","?__")])})();</script><script src="./Les points de vente Chaumet près de vous _ Joaillerie et montres de luxe_files/frontoffice_events_ga_v2.js"></script></body></html>
